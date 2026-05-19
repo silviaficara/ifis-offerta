@@ -36,7 +36,7 @@ export function PackagesSection() {
             <span
               className={`text-[9px] font-semibold uppercase tracking-[0.12em] rounded-full px-2 py-0.5 ${
                 t.featured
-                  ? "bg-[#0066cc] text-white"
+                  ? "bg-[#1a1d56] text-white"
                   : "invisible"
               }`}
               aria-hidden={!t.featured}
@@ -49,7 +49,7 @@ export function PackagesSection() {
               <span
                 className={
                   t.underline
-                    ? "border-b-2 border-[#0066cc] pb-1"
+                    ? "border-b-2 border-[#1a1d56] pb-1"
                     : undefined
                 }
               >
@@ -64,7 +64,7 @@ export function PackagesSection() {
         {packageRows.map((row) => (
           <div
             key={row.id}
-            className="overflow-hidden rounded-3xl bg-[#fafafa] ring-1 ring-[#0066cc]/30"
+            className="overflow-hidden rounded-3xl bg-[#fafafa] ring-1 ring-[#1a1d56]/30"
           >
             <div className="md:grid md:grid-cols-[240px_1fr_1fr_1fr]">
               <div className="px-3 pt-4 pb-2 md:p-6 md:flex md:flex-col md:items-start md:justify-center">
@@ -74,7 +74,7 @@ export function PackagesSection() {
                 <div className="mt-1 md:mt-3 flex items-center gap-2">
                   <span
                     aria-hidden
-                    className="h-px w-6 bg-[#0066cc]"
+                    className="h-px w-6 bg-[#1a1d56]"
                   />
                   <p className="text-[11px] md:text-xs italic text-zinc-600 leading-snug">
                     {row.tagline}

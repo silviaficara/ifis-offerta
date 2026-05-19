@@ -27,7 +27,7 @@ const initial: FormState = {
 };
 
 const PRIVACY_INFORMATIVA_URL =
-  "https://www.privacylab.it/informativa.php?10364343637";
+  "https://www.privacylab.it/informativa.php?10364343930";
 
 const PARTITA_IVA_RE = /^(IT\d{11}|\d{11})$/;
 const EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/;
@@ -74,7 +74,7 @@ function validateField(key: keyof FormState, state: FormState): string | null {
       if (!value) return "Inserisci l'email";
       return EMAIL_RE.test(value as string)
         ? null
-        : "Email non valida: deve contenere @ e un dominio (es. nome@zurichbank.it)";
+        : "Email non valida: deve contenere @ e un dominio (es. nome@email.it)";
     case "telefono":
       if (!value) return "Inserisci il numero di telefono";
       return PHONE_RE.test(value as string)
@@ -217,7 +217,7 @@ export function ContactForm() {
         onChange={(v) => set("email", v)}
         onBlur={() => validateOne("email")}
         error={errors.email}
-        placeholder="nome@zurichbank.it"
+        placeholder="nome@email.it"
         required
       />
       <div className="grid gap-4 sm:grid-cols-2">
@@ -252,7 +252,7 @@ export function ContactForm() {
             type="checkbox"
             checked={state.priority}
             onChange={(e) => set("priority", e.target.checked)}
-            className="mt-1 h-4 w-4 rounded border-zinc-300 text-[#0066cc] focus:ring-[#0066cc]"
+            className="mt-1 h-4 w-4 rounded border-zinc-300 text-[#1a1d56] focus:ring-[#1a1d56]"
           />
           <span className="text-sm text-zinc-600 leading-snug">
             Necessiti di tempi di gestione brevi? Seleziona questa opzione per
@@ -267,7 +267,7 @@ export function ContactForm() {
               checked={state.privacy}
               onChange={(e) => set("privacy", e.target.checked)}
               aria-invalid={errors.privacy ? "true" : undefined}
-              className="mt-1 h-4 w-4 rounded border-zinc-300 text-[#0066cc] focus:ring-[#0066cc]"
+              className="mt-1 h-4 w-4 rounded border-zinc-300 text-[#1a1d56] focus:ring-[#1a1d56]"
             />
             <span className="text-sm text-zinc-600 leading-snug">
               Acconsento all&apos;
@@ -275,7 +275,7 @@ export function ContactForm() {
                 href={PRIVACY_INFORMATIVA_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#0066cc] hover:underline"
+                className="text-[#1a1d56] hover:underline"
               >
                 informativa sulla privacy
               </a>
@@ -297,8 +297,8 @@ export function ContactForm() {
         type="submit"
         className={`inline-flex h-12 w-full items-center justify-center rounded-full border text-base font-medium transition-colors ${
           valid
-            ? "bg-[#0066cc] border-[#0066cc] text-white hover:bg-[#0058b3] hover:border-[#0058b3]"
-            : "bg-transparent border-[#0066cc] text-[#0066cc] hover:bg-[#0066cc]/5"
+            ? "bg-[#1a1d56] border-[#1a1d56] text-white hover:bg-[#12143d] hover:border-[#12143d]"
+            : "bg-transparent border-[#1a1d56] text-[#1a1d56] hover:bg-[#1a1d56]/5"
         }`}
       >
         Invia
@@ -349,7 +349,7 @@ function Input({
         className={`w-full rounded-xl border bg-white px-4 h-11 text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 transition-all ${
           error
             ? "border-red-500 focus:border-red-500 focus:ring-red-500/20"
-            : "border-zinc-200 focus:border-[#0066cc] focus:ring-[#0066cc]/20"
+            : "border-zinc-200 focus:border-[#1a1d56] focus:ring-[#1a1d56]/20"
         }`}
       />
       {error ? (

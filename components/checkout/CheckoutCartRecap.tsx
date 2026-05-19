@@ -67,6 +67,8 @@ export function CheckoutCartRecap() {
                   {[
                     item.config?.memory,
                     item.config?.color,
+                    ...Object.values(item.config?.optionGroups ?? {}),
+                    ...(item.config?.addons ?? []),
                     item.months > 0 ? `${item.months} mesi` : null,
                   ]
                     .filter(Boolean)
@@ -74,7 +76,7 @@ export function CheckoutCartRecap() {
                 </p>
               </div>
               {item.monthly > 0 ? (
-                <p className="shrink-0 text-sm font-semibold text-[#0066cc]">
+                <p className="shrink-0 text-sm font-semibold text-[#1a1d56]">
                   {formatEuro(item.monthly * item.quantity)} €/mese{" "}
                   <span className="font-normal text-zinc-500">+ IVA</span>
                 </p>
@@ -92,7 +94,7 @@ export function CheckoutCartRecap() {
                 >
                   −
                 </button>
-                <span className="text-sm font-semibold text-[#0066cc] w-6 text-center">
+                <span className="text-sm font-semibold text-[#1a1d56] w-6 text-center">
                   {item.quantity}
                 </span>
                 <button
@@ -127,7 +129,7 @@ export function CheckoutCartRecap() {
                 a partire da
               </p>
             )}
-            <p className="text-2xl font-semibold tracking-tight text-[#0066cc]">
+            <p className="text-2xl font-semibold tracking-tight text-[#1a1d56]">
               {formatEuro(totalMonthly)} €/mese{" "}
               <span className="text-base font-normal text-zinc-500">+ IVA</span>
             </p>

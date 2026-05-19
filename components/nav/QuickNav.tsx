@@ -35,7 +35,7 @@ export function QuickNav() {
     <section aria-label="Categorie" className="bg-[#fafafa]">
       <div className="mx-auto max-w-6xl px-6 py-16 sm:py-20">
         <header className="mb-8 sm:mb-10">
-          <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.18em] text-[#0066cc] mb-3">
+          <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.18em] text-[#1a1d56] mb-3">
             Configura per categoria
           </p>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight text-zinc-900">
@@ -48,7 +48,7 @@ export function QuickNav() {
           <a
             key={cat.href}
             href={cat.href}
-            className="group flex flex-col rounded-3xl bg-white ring-1 ring-[#0066cc]/30 hover:ring-2 hover:ring-[#0066cc] shadow-[0_8px_14px_#0000001a] transition-all overflow-hidden"
+            className="group flex flex-col rounded-3xl bg-white ring-1 ring-[#1a1d56]/30 hover:ring-2 hover:ring-[#1a1d56] shadow-[0_8px_14px_#0000001a] transition-all overflow-hidden"
           >
             <div className="relative aspect-[5/3] bg-zinc-50">
               <Image
@@ -65,12 +65,12 @@ export function QuickNav() {
                   {cat.label}
                 </span>
                 {cat.custom ? (
-                  <span className="block mt-1 text-sm sm:text-base font-semibold text-[#0066cc] leading-none">
+                  <span className="block mt-1 text-sm sm:text-base font-semibold text-[#1a1d56] leading-none">
                     Su misura
                   </span>
                 ) : (
                   <>
-                    <span className="block mt-1 text-sm sm:text-base font-semibold text-[#0066cc] leading-none">
+                    <span className="block mt-1 text-sm sm:text-base font-semibold text-[#1a1d56] leading-none">
                       da {cat.from} €/mese
                     </span>
                     <span className="block mt-1 text-[10px] font-normal text-zinc-500 leading-none">
@@ -81,7 +81,7 @@ export function QuickNav() {
               </div>
               <span
                 aria-hidden
-                className="shrink-0 mt-0.5 text-[#0066cc] transition-transform group-hover:translate-x-1"
+                className="shrink-0 mt-0.5 text-[#1a1d56] transition-transform group-hover:translate-x-1"
               >
                 →
               </span>

@@ -26,7 +26,7 @@ export function Header() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6 h-14 flex items-center justify-between gap-2">
         <Link
           href="/"
-          aria-label="Kronos Tech × Zurich Bank — home"
+          aria-label="Kronos Tech × Banca Ifis — home"
           className="inline-flex items-center gap-2 sm:gap-3 min-w-0"
         >
           <Image
@@ -39,10 +39,10 @@ export function Header() {
           />
           <span aria-hidden className="h-3.5 sm:h-5 w-px bg-zinc-300" />
           <Image
-            src="/zurich-logo.png"
-            alt="Zurich Bank"
-            width={400}
-            height={120}
+            src="/banca-ifis-logo.png"
+            alt="Banca Ifis"
+            width={3840}
+            height={893}
             priority
             className="h-5 sm:h-7 w-auto"
           />
@@ -56,7 +56,7 @@ export function Header() {
             count === 0 ? "w-9 sm:w-auto sm:px-4" : "px-3 sm:px-4"
           } text-xs sm:text-sm font-medium transition-colors origin-center whitespace-nowrap ${
             bump
-              ? "bg-[#0066cc] text-white ring-4 ring-[#0066cc]/25 animate-[cart-bump_0.6s_ease-out]"
+              ? "bg-[#1a1d56] text-white ring-4 ring-[#1a1d56]/25 animate-[cart-bump_0.6s_ease-out]"
               : count > 0
                 ? "bg-[#FB8F22] hover:bg-[#E27D14] text-zinc-900"
                 : "bg-zinc-100 hover:bg-zinc-200 text-zinc-900"

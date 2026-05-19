@@ -5,8 +5,8 @@
   --color-background: #ffffff;
   --color-foreground: #1d1d1f;
   --color-muted: #6e6e73;
-  --color-accent: #0066cc;
-  --color-accent-hover: #0058b3;
+  --color-accent: #1a1d56;
+  --color-accent-hover: #12143d;
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }

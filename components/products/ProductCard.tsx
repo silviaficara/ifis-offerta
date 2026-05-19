@@ -13,7 +13,7 @@ export function ProductCard({ product, cardBg = "bg-white" }: Props) {
   return (
     <>
       <article
-        className={`group flex flex-col rounded-2xl sm:rounded-3xl ${cardBg} ring-1 ring-[#0066cc]/30 shadow-[0_8px_14px_#0000001a] overflow-hidden`}
+        className={`group flex flex-col rounded-2xl sm:rounded-3xl ${cardBg} ring-1 ring-[#1a1d56]/30 shadow-[0_8px_14px_#0000001a] overflow-hidden`}
       >
         <div className={`relative aspect-[5/3] ${cardBg}`}>
           {product.image ? (
@@ -47,19 +47,24 @@ export function ProductCard({ product, cardBg = "bg-white" }: Props) {
                     {head}
                   </span>
                   {rest.length > 0 && (
-                    <span className="block text-sm leading-snug text-zinc-800 whitespace-pre-line">
+                    <span className="block mt-1 text-xs sm:text-sm text-zinc-500 leading-snug whitespace-pre-line">
                       {rest.join("\n")}
                     </span>
                   )}
                 </>
               );
             })()}
+            {product.tagline ? (
+              <p className="mt-1 text-xs sm:text-sm text-zinc-500 leading-snug">
+                {product.tagline}
+              </p>
+            ) : null}
           </div>
 
           <button
             type="button"
             onClick={() => setOpen(true)}
-            className="inline-flex h-9 sm:h-10 w-full items-center justify-center rounded-full border border-[#0066cc] bg-transparent px-3 sm:px-4 text-[#0066cc] text-xs sm:text-sm font-medium hover:bg-[#0066cc]/5 transition-colors"
+            className="inline-flex h-9 sm:h-10 w-full items-center justify-center rounded-full border border-[#1a1d56] bg-transparent px-3 sm:px-4 text-[#1a1d56] text-xs sm:text-sm font-medium hover:bg-[#1a1d56]/5 transition-colors"
           >
             Configura
           </button>

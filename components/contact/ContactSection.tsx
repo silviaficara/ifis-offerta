@@ -27,7 +27,7 @@ export function ContactSection() {
               >
                 <span
                   aria-hidden
-                  className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#0066cc]/10 text-2xl"
+                  className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#1a1d56]/10 text-2xl"
                 >
                   {a.icon}
                 </span>

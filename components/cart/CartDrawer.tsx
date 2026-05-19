@@ -86,7 +86,7 @@ export function CartDrawer() {
             <Link
               href="/#pacchetti"
               onClick={close}
-              className="mt-6 inline-flex h-11 items-center justify-center rounded-full bg-[#0066cc] text-white text-sm font-medium px-6 hover:bg-[#0058b3] transition-colors"
+              className="mt-6 inline-flex h-11 items-center justify-center rounded-full bg-[#1a1d56] text-white text-sm font-medium px-6 hover:bg-[#12143d] transition-colors"
             >
               Vedi i pacchetti →
             </Link>
@@ -106,6 +106,8 @@ export function CartDrawer() {
                           {[
                             item.config?.memory,
                             item.config?.color,
+                            ...Object.values(item.config?.optionGroups ?? {}),
+                            ...(item.config?.addons ?? []),
                             item.months > 0 ? `${item.months} mesi` : null,
                           ]
                             .filter(Boolean)
@@ -113,7 +115,7 @@ export function CartDrawer() {
                         </p>
                       </div>
                       {item.monthly > 0 ? (
-                        <p className="shrink-0 text-sm font-semibold text-[#0066cc]">
+                        <p className="shrink-0 text-sm font-semibold text-[#1a1d56]">
                           {formatEuro(item.monthly * item.quantity)} €/mese{" "}
                           <span className="font-normal text-zinc-500">
                             + IVA
@@ -135,7 +137,7 @@ export function CartDrawer() {
                         >
                           −
                         </button>
-                        <span className="text-sm font-semibold text-[#0066cc] w-6 text-center">
+                        <span className="text-sm font-semibold text-[#1a1d56] w-6 text-center">
                           {item.quantity}
                         </span>
                         <button
@@ -179,7 +181,7 @@ export function CartDrawer() {
                         a partire da
                       </p>
                     )}
-                    <p className="text-2xl font-semibold tracking-tight text-[#0066cc]">
+                    <p className="text-2xl font-semibold tracking-tight text-[#1a1d56]">
                       {formatEuro(totalMonthly)} €/mese{" "}
                       <span className="text-base font-normal text-zinc-500">
                         + IVA
@@ -197,7 +199,7 @@ export function CartDrawer() {
               <Link
                 href="/checkout"
                 onClick={close}
-                className="inline-flex h-12 w-full items-center justify-center rounded-full bg-[#0066cc] text-white text-sm font-medium hover:bg-[#0058b3] transition-colors"
+                className="inline-flex h-12 w-full items-center justify-center rounded-full bg-[#1a1d56] text-white text-sm font-medium hover:bg-[#12143d] transition-colors"
               >
                 Richiedi preventivo →
               </Link>

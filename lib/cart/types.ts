@@ -1,6 +1,9 @@
 export type CartItemConfig = {
   memory?: string;
   color?: string;
+  /** Selected label per option group, keyed by group id. */
+  optionGroups?: Record<string, string>;
+  addons?: string[];
 };
 
 export type CartItem = {

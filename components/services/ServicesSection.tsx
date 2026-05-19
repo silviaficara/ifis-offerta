@@ -17,7 +17,7 @@ export function ServicesSection() {
           {services.map((s) => (
             <article
               key={s.id}
-              className="group flex flex-col rounded-2xl sm:rounded-3xl bg-[#fafafa] ring-1 ring-[#0066cc]/30 shadow-[0_8px_14px_#0000001a] overflow-hidden"
+              className="group flex flex-col rounded-2xl sm:rounded-3xl bg-[#fafafa] ring-1 ring-[#1a1d56]/30 shadow-[0_8px_14px_#0000001a] overflow-hidden"
             >
               <div className="relative aspect-[5/3] bg-[#fafafa]">
                 <Image
@@ -33,7 +33,7 @@ export function ServicesSection() {
                   <h4 className="block text-sm sm:text-lg font-semibold tracking-tight text-zinc-900 leading-tight">
                     {s.name}
                   </h4>
-                  <p className="mt-2 text-sm leading-snug text-zinc-800">
+                  <p className="mt-1 text-xs sm:text-sm text-zinc-500 leading-snug">
                     {s.description}
                   </p>
                 </div>

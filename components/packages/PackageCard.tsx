@@ -18,7 +18,7 @@ const tierStyles: Record<
   gold: {
     label: "Gold",
     mobileLabel: "★ Gold · Più scelto",
-    chip: "bg-[#0066cc] text-white",
+    chip: "bg-[#1a1d56] text-white",
   },
   platinum: {
     label: "Premium",
@@ -61,7 +61,7 @@ export function PackageCard({ item, rowTitle }: Props) {
         type="button"
         onClick={handleAdd}
         aria-label={ariaAdd}
-        className="absolute inset-0 z-10 rounded-2xl md:hidden focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#0066cc]"
+        className="absolute inset-0 z-10 rounded-2xl md:hidden focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#1a1d56]"
       />
 
       <div className="md:hidden flex items-stretch gap-3 p-3">
@@ -87,7 +87,7 @@ export function PackageCard({ item, rowTitle }: Props) {
             {noPrice ? (
               <p className="text-xs text-zinc-500">Su richiesta</p>
             ) : (
-              <p className="text-sm font-semibold text-[#0066cc] leading-tight">
+              <p className="text-sm font-semibold text-[#1a1d56] leading-tight">
                 {formatEuro(item.monthly!)} €/mese
                 <span className="block text-[10px] font-normal text-zinc-500 mt-0.5">
                   per {item.months} mesi · + IVA
@@ -98,10 +98,10 @@ export function PackageCard({ item, rowTitle }: Props) {
         </div>
         <div className="self-center shrink-0 pr-1" aria-hidden>
           <span
-            className={`flex items-center justify-center h-8 w-8 rounded-full border-2 border-[#0066cc] transition-colors ${
+            className={`flex items-center justify-center h-8 w-8 rounded-full border-2 border-[#1a1d56] transition-colors ${
               bump
-                ? "bg-[#0066cc] text-white animate-[cart-bump_0.6s_ease-out]"
-                : "bg-white text-[#0066cc]"
+                ? "bg-[#1a1d56] text-white animate-[cart-bump_0.6s_ease-out]"
+                : "bg-white text-[#1a1d56]"
             }`}
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -131,7 +131,7 @@ export function PackageCard({ item, rowTitle }: Props) {
             <p className="mb-4 text-sm text-zinc-500">Su richiesta</p>
           ) : (
             <div className="mb-4">
-              <p className="text-base font-semibold text-[#0066cc]">
+              <p className="text-base font-semibold text-[#1a1d56]">
                 {formatEuro(item.monthly!)} €/mese{" "}
                 <span className="text-xs font-normal text-zinc-500">+ IVA</span>
               </p>
@@ -144,9 +144,14 @@ export function PackageCard({ item, rowTitle }: Props) {
           <button
             type="button"
             onClick={handleAdd}
-            className="inline-flex h-9 items-center justify-center rounded-full bg-[#0066cc] px-4 text-white text-xs font-medium hover:bg-[#0058b3] transition-colors"
+            disabled={bump}
+            className={`inline-flex h-9 items-center justify-center rounded-full px-4 text-xs font-medium transition-colors ${
+              bump
+                ? "bg-[#FB8F22] text-white animate-[cart-bump_0.6s_ease-out]"
+                : "bg-[#1a1d56] text-white hover:bg-[#12143d]"
+            }`}
           >
-            {noPrice ? "Richiedi" : "Aggiungi"}
+            {bump ? "Aggiunto!" : noPrice ? "Richiedi" : "Aggiungi"}
           </button>
         </div>
       </div>

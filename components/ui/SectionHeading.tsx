@@ -19,7 +19,7 @@ export function SectionHeading({
   return (
     <header id={id} className={`scroll-mt-24 mb-12 ${alignment}`}>
       {eyebrow ? (
-        <p className="text-xs sm:text-sm font-semibold text-[#0066cc] mb-3 uppercase tracking-[0.12em]">
+        <p className="text-xs sm:text-sm font-semibold text-[#1a1d56] mb-3 uppercase tracking-[0.12em]">
           {eyebrow}
         </p>
       ) : null}

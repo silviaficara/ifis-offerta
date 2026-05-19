@@ -4,7 +4,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
-  title: "Documenti noleggio consultabili — Kronos × Zurich Bank",
+  title: "Documenti noleggio consultabili — Kronos × Banca Ifis",
   description:
     "Documentazione del noleggio operativo Ifis Rental Services: contratto, polizza, recesso, informativa privacy.",
 };
@@ -55,7 +55,7 @@ export default function DocumentiConsultabili() {
           </Link>
 
           <header className="mb-10">
-            <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.18em] text-[#0066cc] mb-3">
+            <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.18em] text-[#1a1d56] mb-3">
               Documentazione
             </p>
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-zinc-900 leading-tight">
@@ -79,12 +79,12 @@ export default function DocumentiConsultabili() {
                   <div className="flex items-start gap-3 min-w-0">
                     <span
                       aria-hidden
-                      className="mt-0.5 shrink-0 text-zinc-400 group-hover:text-[#0066cc] text-xl"
+                      className="mt-0.5 shrink-0 text-zinc-400 group-hover:text-[#1a1d56] text-xl"
                     >
                       📄
                     </span>
                     <div className="min-w-0">
-                      <p className="text-sm font-semibold text-zinc-900 group-hover:text-[#0066cc] transition-colors">
+                      <p className="text-sm font-semibold text-zinc-900 group-hover:text-[#1a1d56] transition-colors">
                         {d.title}
                       </p>
                       <p className="text-xs text-zinc-500 mt-0.5">
@@ -94,7 +94,7 @@ export default function DocumentiConsultabili() {
                   </div>
                   <span
                     aria-hidden
-                    className="shrink-0 text-zinc-300 group-hover:text-[#0066cc] transition-colors"
+                    className="shrink-0 text-zinc-300 group-hover:text-[#1a1d56] transition-colors"
                   >
                     PDF →
                   </span>

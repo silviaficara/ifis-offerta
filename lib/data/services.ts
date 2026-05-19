@@ -17,7 +17,7 @@ export const services: Service[] = [
     id: "microsoft-365",
     name: "Microsoft 365",
     description:
-      "Soluzione cloud per produttività, collaborazione e sicurezza dei dati, configurata su misura.",
+      "Soluzione cloud per produttività, collaborazione e sicurezza dei dati.",
     image: "/services/microsoft-365.png",
   },
   {

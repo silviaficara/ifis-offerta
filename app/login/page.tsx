@@ -11,11 +11,11 @@ export default function LoginPage() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-white px-6">
       <div className="w-full max-w-sm">
-        <p className="text-center text-[11px] font-semibold uppercase tracking-[0.18em] text-[#0066cc] mb-3">
+        <p className="text-center text-[11px] font-semibold uppercase tracking-[0.18em] text-[#1a1d56] mb-3">
           Accesso riservato
         </p>
         <h1 className="text-center text-2xl font-semibold tracking-tight text-zinc-900 mb-8">
-          Offerta Zurich Bank
+          Offerta Banca Ifis
           <br />× Kronos Tech
         </h1>
         <form action={formAction} className="space-y-3">
@@ -26,12 +26,12 @@ export default function LoginPage() {
             required
             autoFocus
             autoComplete="current-password"
-            className="block w-full h-12 px-5 rounded-full border border-zinc-200 bg-white text-zinc-900 placeholder:text-zinc-400 focus:border-[#0066cc] focus:outline-none transition-colors"
+            className="block w-full h-12 px-5 rounded-full border border-zinc-200 bg-white text-zinc-900 placeholder:text-zinc-400 focus:border-[#1a1d56] focus:outline-none transition-colors"
           />
           <button
             type="submit"
             disabled={pending}
-            className="block w-full h-12 rounded-full bg-[#0066cc] text-white text-base font-medium hover:bg-[#0058b3] transition-colors disabled:opacity-60"
+            className="block w-full h-12 rounded-full bg-[#1a1d56] text-white text-base font-medium hover:bg-[#12143d] transition-colors disabled:opacity-60"
           >
             {pending ? "Verifica…" : "Entra"}
           </button>

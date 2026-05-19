@@ -17,7 +17,7 @@ export function CartToast() {
       }`}
     >
       <div className="inline-flex items-center gap-3 rounded-2xl bg-zinc-900 text-white px-5 py-3 shadow-xl">
-        <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#0066cc] text-xs font-bold">
+        <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#1a1d56] text-xs font-bold">
           ✓
         </span>
         <span className="text-sm font-medium">

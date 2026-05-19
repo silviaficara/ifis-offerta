@@ -1,7 +1,4 @@
-"use client";
-
 import Image from "next/image";
-import { openCookiePrefs } from "@/components/cookies/CookieBanner";
 
 export function Footer() {
   return (
@@ -49,7 +46,7 @@ export function Footer() {
             </a>
             <span aria-hidden className="md:hidden">—</span>
             <a
-              href="https://www.privacylab.it/informativa.php?10364477874"
+              href="https://www.privacylab.it/informativa.php?10364463292"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:underline transition-all"
@@ -59,8 +56,7 @@ export function Footer() {
             <span aria-hidden className="md:hidden">—</span>
             <button
               type="button"
-              onClick={openCookiePrefs}
-              className="hover:underline transition-all"
+              className="elmo-show hover:underline transition-all cursor-pointer"
             >
               Modifica preferenze Cookie
             </button>

@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { CartProvider } from "@/lib/cart/CartContext";
 import { CartToast } from "@/components/ui/CartToast";
 import { CartDrawer } from "@/components/cart/CartDrawer";
-import { CookieBanner } from "@/components/cookies/CookieBanner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,9 +17,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Kronos × Zurich Bank — Noleggio operativo",
+  title: "Kronos × Banca Ifis — Noleggio operativo",
   description:
-    "Offerta dedicata ai consulenti finanziari Zurich Bank. Noleggio operativo Ifis Rental Services con condizioni dedicate.",
+    "Offerta dedicata ai clienti Banca Ifis. Noleggio operativo Ifis Rental Services con condizioni dedicate.",
 };
 
 export default function RootLayout({
@@ -38,7 +38,10 @@ export default function RootLayout({
           <CartDrawer />
           <CartToast />
         </CartProvider>
-        <CookieBanner />
+        <Script
+          src="https://bnr.elmobot.eu/ou1WD8C9-ZFV_g7k64n2Z/it.js"
+          strategy="beforeInteractive"
+        />
       </body>
     </html>
   );

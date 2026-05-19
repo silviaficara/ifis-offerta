@@ -32,12 +32,32 @@ type CartContextValue = {
 
 const CartContext = createContext<CartContextValue | null>(null);
 
+function sameAddons(a: string[] | undefined, b: string[] | undefined): boolean {
+  const aSet = new Set(a ?? []);
+  const bSet = new Set(b ?? []);
+  if (aSet.size !== bSet.size) return false;
+  for (const id of aSet) if (!bSet.has(id)) return false;
+  return true;
+}
+
+function sameOptionGroups(
+  a: Record<string, string> | undefined,
+  b: Record<string, string> | undefined,
+): boolean {
+  const aKeys = Object.keys(a ?? {});
+  const bKeys = Object.keys(b ?? {});
+  if (aKeys.length !== bKeys.length) return false;
+  return aKeys.every((k) => a?.[k] === b?.[k]);
+}
+
 function sameConfig(
   a: CartItem["config"] | undefined,
   b: CartItem["config"] | undefined,
 ): boolean {
   return (a?.memory ?? "") === (b?.memory ?? "") &&
-    (a?.color ?? "") === (b?.color ?? "");
+    (a?.color ?? "") === (b?.color ?? "") &&
+    sameAddons(a?.addons, b?.addons) &&
+    sameOptionGroups(a?.optionGroups, b?.optionGroups);
 }
 
 export function CartProvider({ children }: { children: ReactNode }) {
