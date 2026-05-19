@@ -1,0 +1,36 @@
+@import "tailwindcss";
+/* rebuild trigger */
+
+@theme inline {
+  --color-background: #ffffff;
+  --color-foreground: #1d1d1f;
+  --color-muted: #6e6e73;
+  --color-accent: #0066cc;
+  --color-accent-hover: #0058b3;
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--color-foreground);
+  font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, "SF Pro Text",
+    "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(4px);
+}
+
+@keyframes cart-bump {
+  0%, 100% { transform: scale(1); }
+  25% { transform: scale(1.18); }
+  55% { transform: scale(0.94); }
+  80% { transform: scale(1.04); }
+}
