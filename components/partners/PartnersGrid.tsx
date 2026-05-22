@@ -13,11 +13,11 @@ export function PartnersGrid() {
           align="center"
         />
 
-        <div className="mx-auto mt-4 grid max-w-5xl grid-cols-2 gap-3 sm:gap-6 sm:grid-cols-3 lg:grid-cols-5">
+        <div className="mx-auto mt-4 grid max-w-5xl grid-cols-2 gap-3 sm:gap-6 sm:grid-cols-3 lg:grid-cols-6">
           {partners.map((p) => (
             <div
               key={p.name}
-              className="group flex aspect-[5/3] items-center justify-center overflow-hidden rounded-2xl bg-white px-4 sm:px-6 text-center"
+              className="group flex aspect-[5/3] items-center justify-center overflow-hidden rounded-2xl bg-white px-3 sm:px-4 text-center"
             >
               <PartnerLogo partner={p} />
             </div>
