@@ -8,7 +8,7 @@ export function PartnerLogo({ partner }: { partner: Partner }) {
   const [slugError, setSlugError] = useState(false);
 
   const baseClass =
-    "h-10 sm:h-20 w-auto max-w-[100px] sm:max-w-[200px] object-contain grayscale opacity-60 mix-blend-multiply group-hover:grayscale-0 group-hover:opacity-100 transition duration-200";
+    "max-h-8 sm:max-h-12 w-auto max-w-[80px] sm:max-w-[120px] object-contain grayscale opacity-60 mix-blend-multiply group-hover:grayscale-0 group-hover:opacity-100 transition duration-200";
 
   const scaleStyle = partner.scale
     ? { transform: `scale(${partner.scale})` }
