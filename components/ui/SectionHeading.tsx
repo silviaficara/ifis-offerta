@@ -52,7 +52,7 @@ export function SectionHeading({
   return (
     <header
       id={id}
-      className="scroll-mt-24 mb-12 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between sm:gap-8"
+      className="scroll-mt-24 mb-6 sm:mb-12 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between sm:gap-8"
     >
       {titleBlock}
       <PriceBadge amount={fromPrice} />
