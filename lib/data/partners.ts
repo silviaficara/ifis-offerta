@@ -30,5 +30,5 @@ export const partners: Partner[] = [
   { name: "FileMaker", image: "/partners/filemaker.svg" },
   { name: "Synology", image: "/partners/synology.svg", scale: 2 },
   { name: "Symantec", image: "/partners/symantec.svg" },
-  { name: "Wacom", image: "/partners/wacom.svg", scale: 1.6 },
+  { name: "Wacom", image: "/partners/wacom.svg", scale: 0.6 },
 ];
