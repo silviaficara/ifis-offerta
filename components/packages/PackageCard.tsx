@@ -88,6 +88,9 @@ export function PackageCard({ item, rowTitle }: Props) {
               <p className="text-xs text-zinc-500">Su richiesta</p>
             ) : (
               <p className="text-sm font-semibold text-[#1a1d56] leading-tight">
+                <span className="block text-[10px] font-normal uppercase tracking-wide text-zinc-500">
+                  A partire da
+                </span>
                 {formatEuro(item.monthly!)} €/mese
                 <span className="block text-[10px] font-normal text-zinc-500 mt-0.5">
                   per {item.months} mesi · + IVA
@@ -131,6 +134,7 @@ export function PackageCard({ item, rowTitle }: Props) {
             <p className="mb-4 text-sm text-zinc-500">Su richiesta</p>
           ) : (
             <div className="mb-4">
+              <p className="text-[11px] uppercase tracking-wide text-zinc-500">A partire da</p>
               <p className="text-base font-semibold text-[#1a1d56]">
                 {formatEuro(item.monthly!)} €/mese{" "}
                 <span className="text-xs font-normal text-zinc-500">+ IVA</span>

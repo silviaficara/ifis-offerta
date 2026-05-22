@@ -11,6 +11,7 @@ type Props = {
   subtitle?: ReactNode;
   products: ConfigurableProduct[];
   tinted?: boolean;
+  fromPrice?: number;
 };
 
 export function ProductSection({
@@ -20,13 +21,19 @@ export function ProductSection({
   subtitle,
   products,
   tinted = false,
+  fromPrice,
 }: Props) {
   const bgClass = tinted ? "bg-[#fafafa]" : "";
   const cardBg = tinted ? "bg-white" : "bg-[#fafafa]";
   return (
     <section id={id} className={`${bgClass} scroll-mt-24`}>
       <div className="mx-auto max-w-6xl px-4 sm:px-6 py-16 sm:py-24">
-        <SectionHeading eyebrow={eyebrow} title={title} subtitle={subtitle} />
+        <SectionHeading
+          eyebrow={eyebrow}
+          title={title}
+          subtitle={subtitle}
+          fromPrice={fromPrice}
+        />
         <div className="grid gap-3 sm:gap-6 grid-cols-2 lg:grid-cols-3">
           {products.map((p) => (
             <ProductCard key={p.id} product={p} cardBg={cardBg} />

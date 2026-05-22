@@ -28,6 +28,7 @@ export default function Home() {
           subtitle="Configura memoria, colore e durata."
           products={appleProducts}
           tinted
+          fromPrice={22}
         />
 
         <ProductSection
@@ -36,6 +37,7 @@ export default function Home() {
           title="Notebook business."
           subtitle="HP, Lenovo, DELL per il lavoro quotidiano."
           products={notebookProducts}
+          fromPrice={26}
         />
 
         <ProductSection
@@ -45,6 +47,7 @@ export default function Home() {
           subtitle="Laser a colori, wireless. Per studi e uffici."
           products={printerProducts}
           tinted
+          fromPrice={15}
         />
 
         <ServicesSection />

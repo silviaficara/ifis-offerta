@@ -9,7 +9,7 @@ type Category = {
 };
 
 const categories: Category[] = [
-  { href: "#apple", label: "Apple", from: 23, image: "/categories/apple.png" },
+  { href: "#apple", label: "Apple", from: 22, image: "/categories/apple.png" },
   {
     href: "#notebook",
     label: "Notebook",
