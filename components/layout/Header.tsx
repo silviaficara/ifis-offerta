@@ -39,12 +39,12 @@ export function Header() {
           />
           <span aria-hidden className="h-3.5 sm:h-5 w-px bg-zinc-300" />
           <Image
-            src="/banca-ifis-logo.png"
-            alt="Banca Ifis"
-            width={3840}
-            height={893}
+            src="/banca-ifis-logo.webp"
+            alt="Ifis Rental Services — Banca Ifis"
+            width={1097}
+            height={522}
             priority
-            className="h-5 sm:h-7 w-auto"
+            className="h-9 sm:h-11 w-auto"
           />
         </Link>
 

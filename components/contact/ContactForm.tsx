@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useCart } from "@/lib/cart/CartContext";
 
 type FormState = {
   nome: string;
@@ -109,9 +111,10 @@ function isFormValid(state: FormState): boolean {
 }
 
 export function ContactForm() {
+  const router = useRouter();
+  const { clear } = useCart();
   const [state, setState] = useState<FormState>(initial);
   const [errors, setErrors] = useState<FormErrors>({});
-  const [submitted, setSubmitted] = useState(false);
 
   const clearError = (key: keyof FormState) => {
     setErrors((e) => {
@@ -147,40 +150,17 @@ export function ContactForm() {
     setErrors(newErrors);
     if (Object.keys(newErrors).length > 0) return;
     console.log("[bozza] form contatti:", state);
-    setSubmitted(true);
+    clear();
+    router.push("/checkout/grazie");
   };
 
   const valid = isFormValid(state);
-
-  if (submitted) {
-    return (
-      <div className="rounded-3xl bg-white ring-1 ring-zinc-100 p-8 text-center">
-        <p className="text-2xl font-semibold tracking-tight text-zinc-900">
-          Grazie!
-        </p>
-        <p className="mt-2 text-zinc-600">
-          Ti contatteremo entro 24 ore lavorative.
-        </p>
-        <button
-          type="button"
-          onClick={() => {
-            setState(initial);
-            setErrors({});
-            setSubmitted(false);
-          }}
-          className="mt-6 inline-flex h-10 items-center justify-center rounded-full bg-zinc-100 hover:bg-zinc-200 px-5 text-sm font-medium text-zinc-900 transition-colors"
-        >
-          Invia un&apos;altra richiesta
-        </button>
-      </div>
-    );
-  }
 
   return (
     <form
       noValidate
       onSubmit={handleSubmit}
-      className="rounded-3xl bg-white ring-1 ring-zinc-100 p-6 sm:p-8 space-y-4"
+      className="rounded-2xl sm:rounded-3xl bg-white ring-1 ring-zinc-100 p-5 sm:p-7 lg:p-8 space-y-4"
     >
       <div className="grid gap-4 sm:grid-cols-2">
         <Input

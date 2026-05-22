@@ -16,30 +16,34 @@ export default function CheckoutPage() {
     <>
       <Header />
       <main className="flex-1 bg-white">
-        <div className="mx-auto max-w-3xl px-6 py-12 sm:py-16">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 py-8 sm:py-12 lg:py-16">
           <Link
             href="/"
-            className="inline-flex items-center gap-1 text-sm text-zinc-500 hover:text-zinc-900 transition-colors mb-8"
+            className="inline-flex items-center gap-1 text-sm text-zinc-500 hover:text-zinc-900 transition-colors mb-6 sm:mb-8"
           >
             <span aria-hidden>←</span> Torna ai prodotti
           </Link>
 
-          <header className="mb-12">
+          <header className="mb-8 sm:mb-12">
             <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.18em] text-[#1a1d56] mb-3">
               Richiesta preventivo
             </p>
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-zinc-900 leading-tight">
               Parliamo del tuo progetto.
             </h1>
-            <p className="mt-4 text-base sm:text-lg text-zinc-600">
-              Compila il form qui sotto. Ti ricontatteremo entro 24 ore
-              lavorative.
+            <p className="mt-3 sm:mt-4 text-base sm:text-lg text-zinc-600">
+              Compila il form. Ti ricontatteremo entro 24 ore lavorative.
             </p>
           </header>
 
-          <CheckoutCartRecap />
-
-          <ContactForm />
+          <div className="grid gap-6 sm:gap-8 lg:grid-cols-5 items-start">
+            <div className="lg:col-span-3 lg:order-1 order-2">
+              <ContactForm />
+            </div>
+            <div className="lg:col-span-2 lg:order-2 order-1 lg:sticky lg:top-20 lg:self-start">
+              <CheckoutCartRecap />
+            </div>
+          </div>
         </div>
       </main>
       <Footer />

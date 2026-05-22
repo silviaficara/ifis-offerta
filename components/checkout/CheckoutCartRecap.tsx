@@ -17,19 +17,19 @@ export function CheckoutCartRecap() {
 
   if (items.length === 0) {
     return (
-      <div className="mb-12 rounded-2xl bg-[#fafafa] p-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+      <div className="rounded-2xl bg-[#fafafa] p-5 sm:p-6 flex flex-col gap-4">
         <div>
           <p className="text-sm font-semibold text-zinc-900">
             Nessun prodotto nel preventivo
           </p>
-          <p className="text-xs text-zinc-500 mt-0.5">
+          <p className="text-xs text-zinc-500 mt-1 leading-relaxed">
             Puoi inviare comunque la richiesta — ti aiuteremo a configurare la
             soluzione giusta.
           </p>
         </div>
         <Link
           href="/"
-          className="inline-flex h-9 w-fit items-center justify-center rounded-full bg-zinc-900 text-white text-xs font-medium px-4 hover:bg-zinc-700 transition-colors"
+          className="inline-flex h-11 sm:h-10 w-full items-center justify-center rounded-full bg-[#1a1d56] text-white text-sm font-medium px-5 hover:bg-[#12143d] transition-colors"
         >
           Sfoglia i pacchetti →
         </Link>
@@ -38,10 +38,10 @@ export function CheckoutCartRecap() {
   }
 
   return (
-    <div className="mb-12 rounded-2xl bg-[#fafafa] p-6 sm:p-7">
-      <div className="flex items-center justify-between mb-5">
+    <div className="rounded-2xl bg-[#fafafa] p-5 sm:p-6 lg:p-7">
+      <div className="flex items-center justify-between mb-4 sm:mb-5">
         <p className="text-base sm:text-lg font-semibold tracking-tight text-zinc-900">
-          Riepilogo preventivo ·{" "}
+          Riepilogo ·{" "}
           <span className="text-zinc-500 font-normal">
             {items.length} {items.length === 1 ? "prodotto" : "prodotti"}
           </span>
@@ -57,13 +57,13 @@ export function CheckoutCartRecap() {
 
       <ul className="divide-y divide-zinc-200">
         {items.map((item) => (
-          <li key={item.id} className="py-3">
-            <div className="flex items-start justify-between gap-4">
+          <li key={item.id} className="py-3 sm:py-4">
+            <div className="flex items-start justify-between gap-3 sm:gap-4">
               <div className="min-w-0 flex-1">
                 <p className="text-sm font-medium text-zinc-900 leading-snug">
                   {item.name}
                 </p>
-                <p className="text-xs text-zinc-500 mt-0.5">
+                <p className="text-xs text-zinc-500 mt-0.5 leading-relaxed">
                   {[
                     item.config?.memory,
                     item.config?.color,
@@ -76,21 +76,21 @@ export function CheckoutCartRecap() {
                 </p>
               </div>
               {item.monthly > 0 ? (
-                <p className="shrink-0 text-sm font-semibold text-[#1a1d56]">
-                  {formatEuro(item.monthly * item.quantity)} €/mese{" "}
-                  <span className="font-normal text-zinc-500">+ IVA</span>
+                <p className="shrink-0 text-sm font-semibold text-[#1a1d56] text-right leading-snug">
+                  {formatEuro(item.monthly * item.quantity)} €/mese
+                  <span className="block font-normal text-zinc-500 text-xs">+ IVA</span>
                 </p>
               ) : (
                 <p className="shrink-0 text-sm text-zinc-500">Su richiesta</p>
               )}
             </div>
-            <div className="mt-2 flex items-center justify-between gap-3">
+            <div className="mt-2.5 flex items-center justify-between gap-3">
               <div className="inline-flex items-center rounded-full bg-white ring-1 ring-zinc-200">
                 <button
                   type="button"
                   onClick={() => decrementItem(item.id)}
                   aria-label="Riduci quantità"
-                  className="w-7 h-7 flex items-center justify-center text-sm text-zinc-700 hover:text-zinc-900 transition-colors"
+                  className="w-9 h-9 sm:w-8 sm:h-8 flex items-center justify-center text-base sm:text-sm text-zinc-700 hover:text-zinc-900 transition-colors"
                 >
                   −
                 </button>
@@ -101,7 +101,7 @@ export function CheckoutCartRecap() {
                   type="button"
                   onClick={() => incrementItem(item.id)}
                   aria-label="Aumenta quantità"
-                  className="w-7 h-7 flex items-center justify-center text-sm text-zinc-700 hover:text-zinc-900 transition-colors"
+                  className="w-9 h-9 sm:w-8 sm:h-8 flex items-center justify-center text-base sm:text-sm text-zinc-700 hover:text-zinc-900 transition-colors"
                 >
                   +
                 </button>
@@ -109,7 +109,7 @@ export function CheckoutCartRecap() {
               <button
                 type="button"
                 onClick={() => removeItem(item.id)}
-                className="text-xs text-zinc-400 hover:text-zinc-900 transition-colors"
+                className="text-xs text-zinc-400 hover:text-zinc-900 transition-colors px-1 py-1"
               >
                 Rimuovi
               </button>
@@ -118,7 +118,7 @@ export function CheckoutCartRecap() {
         ))}
       </ul>
 
-      <div className="mt-5 pt-5 border-t border-zinc-200">
+      <div className="mt-4 sm:mt-5 pt-4 sm:pt-5 border-t border-zinc-200">
         <div className="flex items-end justify-between gap-3">
           <p className="text-[10px] uppercase tracking-[0.12em] text-zinc-500">
             Totale canone mensile
@@ -129,9 +129,9 @@ export function CheckoutCartRecap() {
                 a partire da
               </p>
             )}
-            <p className="text-2xl font-semibold tracking-tight text-[#1a1d56]">
+            <p className="text-xl sm:text-2xl font-semibold tracking-tight text-[#1a1d56]">
               {formatEuro(totalMonthly)} €/mese{" "}
-              <span className="text-base font-normal text-zinc-500">+ IVA</span>
+              <span className="text-sm sm:text-base font-normal text-zinc-500">+ IVA</span>
             </p>
           </div>
         </div>
