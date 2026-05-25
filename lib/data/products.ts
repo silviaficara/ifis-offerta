@@ -612,17 +612,4 @@ export const printerProducts: ConfigurableProduct[] = [
     basePrice: 31,
     durations: defaultDurations,
   },
-  {
-    id: "test-notebook-2026",
-    name: "Test Notebook 2026",
-    basePrice: 25,
-    durations: defaultDurations,
-    tagline: "incubo",
-    colors: [
-      {
-        label: "NERISSIMO",
-        swatch: "#000000",
-      },
-    ],
-  },
 ];
