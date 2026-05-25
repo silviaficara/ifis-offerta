@@ -26,10 +26,4 @@ export const services: Service[] = [
       "Comunicazioni aziendali stabili e sicure, con gestione di rete, hosting e domini.",
     image: "/services/google-workspace.png",
   },
-  {
-    id: "test-servizio",
-    name: "test servizio",
-    description: "asldkfmlaksmdf",
-    image: "/services/test-servizio.png",
-  },
 ];
