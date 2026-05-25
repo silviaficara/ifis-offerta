@@ -8,7 +8,7 @@ export type Service = {
 export const services: Service[] = [
   {
     id: "kronos-care",
-    name: "Kronos Care Business",
+    name: "Kronos Care Business2",
     description: "Cybersecurity e gestione IT per proteggere dati e continuità operativa.",
     image: "/services/kronos-care.png",
   },
