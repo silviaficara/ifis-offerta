@@ -613,3 +613,4 @@ export const printerProducts: ConfigurableProduct[] = [
     durations: defaultDurations,
   },
 ];
+export const monitorProducts: ConfigurableProduct[] = [];
