@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { useCart } from "@/lib/cart/CartContext";
+import type { CartItem } from "@/lib/cart/types";
+import { formatEuro } from "@/lib/format";
 
 type FormState = {
   nome: string;
@@ -11,6 +12,7 @@ type FormState = {
   email: string;
   telefono: string;
   cap: string;
+  note: string;
   priority: boolean;
   privacy: boolean;
 };
@@ -24,6 +26,7 @@ const initial: FormState = {
   email: "",
   telefono: "",
   cap: "",
+  note: "",
   priority: false,
   privacy: false,
 };
@@ -110,11 +113,66 @@ function isFormValid(state: FormState): boolean {
   return REQUIRED_FIELDS.every((key) => validateField(key, state) === null);
 }
 
+/** Costruisce la descrizione testuale del carrello per il lead. */
+function buildCartItemsAndConfig(items: CartItem[]): {
+  items: Array<{ k2rProduct: string; k2rVersion: string; quantity: number; productId: string }>;
+  configurazione: string;
+} {
+  const apiItems = items.map((it) => {
+    const parts = [
+      it.config?.memory,
+      it.config?.color,
+      ...Object.values(it.config?.optionGroups ?? {}),
+      ...(it.config?.addons ?? []),
+      it.months > 0 ? `${it.months} mesi` : null,
+    ].filter(Boolean) as string[];
+    return {
+      productId: it.productId,
+      // Sostituisco \n con " — " per leggibilita' del testo nel CRM (alcuni
+      // titoli pacchetto sono multi-riga, es. "Postazione\nMobilità").
+      k2rProduct: it.name.replace(/\n/g, " — "),
+      k2rVersion: parts.join(" · "),
+      quantity: it.quantity,
+    };
+  });
+
+  if (items.length === 0) {
+    return { items: [], configurazione: "" };
+  }
+
+  const lines: string[] = [];
+  items.forEach((it, idx) => {
+    lines.push(`${idx + 1}. ${it.name.replace(/\n/g, " — ")} × ${it.quantity}`);
+    const detail = [
+      it.config?.memory,
+      it.config?.color,
+      ...Object.values(it.config?.optionGroups ?? {}),
+      ...(it.config?.addons ?? []),
+      it.months > 0 ? `${it.months} mesi` : null,
+    ]
+      .filter(Boolean)
+      .join(" · ");
+    if (detail) lines.push(`   ${detail}`);
+    if (it.monthly > 0) {
+      const totalLine =
+        it.quantity > 1
+          ? ` (totale ${formatEuro(it.monthly * it.quantity)} €/mese)`
+          : "";
+      lines.push(`   ${formatEuro(it.monthly)} €/mese${totalLine}`);
+    } else {
+      lines.push(`   Prezzo su richiesta`);
+    }
+  });
+  return { items: apiItems, configurazione: lines.join("\n") };
+}
+
 export function ContactForm() {
-  const router = useRouter();
-  const { clear } = useCart();
+  const { items, totalMonthly, clear } = useCart();
   const [state, setState] = useState<FormState>(initial);
   const [errors, setErrors] = useState<FormErrors>({});
+  const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const clearError = (key: keyof FormState) => {
     setErrors((e) => {
@@ -140,8 +198,9 @@ export function ContactForm() {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setSubmitError(null);
     const newErrors: FormErrors = {};
     REQUIRED_FIELDS.forEach((key) => {
       const err = validateField(key, state);
@@ -149,18 +208,97 @@ export function ContactForm() {
     });
     setErrors(newErrors);
     if (Object.keys(newErrors).length > 0) return;
-    console.log("[bozza] form contatti:", state);
-    clear();
-    router.push("/checkout/grazie");
+
+    const { items: apiItems, configurazione } = buildCartItemsAndConfig(items);
+
+    // Aggiungo riepilogo totale alla configurazione se ci sono prezzi non "su richiesta"
+    const configWithTotal =
+      totalMonthly > 0
+        ? `${configurazione}\n\nTotale canone mensile: ${formatEuro(totalMonthly)} €/mese + IVA`
+        : configurazione;
+
+    const payload = {
+      partnerToken: process.env.NEXT_PUBLIC_PARTNER_TOKEN ?? "",
+      company: "", // Ifis non chiede l'azienda
+      firstName: state.nome.trim(),
+      lastName: state.cognome.trim(),
+      piva: state.partitaIva.trim(),
+      email: state.email.trim(),
+      phone: state.telefono.trim(),
+      cap: state.cap.trim(),
+      // Qualifying fields non applicabili a Ifis/Credifarma: mandiamo stringhe
+      // vuote/false in modo che il gestore non li mostri (skip dei vuoti).
+      partitaIva: "",
+      bilancioDepositato: false,
+      giaCliente: false,
+      noleggioUsato: false,
+      consensoMarketing: false,
+      items: apiItems,
+      note: state.note.trim() + (state.priority ? "\n[Richiesta gestione prioritaria]" : ""),
+      configurazione: configWithTotal,
+    };
+
+    setSubmitting(true);
+    try {
+      const r = await fetch("/api/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const json = await r.json().catch(() => null);
+      if (!r.ok || !json?.ok) {
+        setSubmitError(
+          `Errore nell'invio (${r.status}): ${
+            json?.error ?? "riprova tra qualche istante"
+          }`
+        );
+        setSubmitting(false);
+        return;
+      }
+      setSubmitting(false);
+      setSubmitted(true);
+      clear(); // svuota il carrello dopo invio riuscito
+    } catch (err) {
+      setSubmitError(
+        "Connessione non disponibile. Verifica la rete e riprova."
+      );
+      console.warn("[lead] submit error", err);
+      setSubmitting(false);
+    }
   };
 
   const valid = isFormValid(state);
+
+  if (submitted) {
+    return (
+      <div className="rounded-3xl bg-white ring-1 ring-zinc-100 p-8 text-center">
+        <p className="text-2xl font-semibold tracking-tight text-zinc-900">
+          Grazie!
+        </p>
+        <p className="mt-2 text-zinc-600">
+          Ti contatteremo entro 24 ore lavorative.
+        </p>
+        <button
+          type="button"
+          onClick={() => {
+            setState(initial);
+            setErrors({});
+            setSubmitted(false);
+            setSubmitError(null);
+          }}
+          className="mt-6 inline-flex h-10 items-center justify-center rounded-full bg-zinc-100 hover:bg-zinc-200 px-5 text-sm font-medium text-zinc-900 transition-colors"
+        >
+          Invia un&apos;altra richiesta
+        </button>
+      </div>
+    );
+  }
 
   return (
     <form
       noValidate
       onSubmit={handleSubmit}
-      className="rounded-2xl sm:rounded-3xl bg-white ring-1 ring-zinc-100 p-5 sm:p-7 lg:p-8 space-y-4"
+      className="rounded-3xl bg-white ring-1 ring-zinc-100 p-6 sm:p-8 space-y-4"
     >
       <div className="grid gap-4 sm:grid-cols-2">
         <Input
@@ -226,6 +364,19 @@ export function ContactForm() {
         />
       </div>
 
+      <label className="block">
+        <span className="block text-xs font-medium text-zinc-500 mb-1.5">
+          Note aggiuntive
+        </span>
+        <textarea
+          value={state.note}
+          onChange={(e) => set("note", e.target.value)}
+          rows={3}
+          placeholder="Es. richieste particolari, tempistiche, dotazioni accessorie…"
+          className="w-full rounded-xl border border-zinc-200 bg-white px-4 py-2 text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:border-[#1a1d56] focus:ring-[#1a1d56]/20 transition-all"
+        />
+      </label>
+
       <div className="space-y-3 pt-2">
         <label className="flex items-start gap-3">
           <input
@@ -273,15 +424,24 @@ export function ContactForm() {
         aiutiamo noi!
       </p>
 
+      {submitError ? (
+        <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800">
+          {submitError}
+        </div>
+      ) : null}
+
       <button
         type="submit"
+        disabled={submitting}
         className={`inline-flex h-12 w-full items-center justify-center rounded-full border text-base font-medium transition-colors ${
-          valid
+          submitting
+            ? "border-zinc-300 bg-zinc-100 text-zinc-500 cursor-not-allowed"
+            : valid
             ? "bg-[#1a1d56] border-[#1a1d56] text-white hover:bg-[#12143d] hover:border-[#12143d]"
             : "bg-transparent border-[#1a1d56] text-[#1a1d56] hover:bg-[#1a1d56]/5"
         }`}
       >
-        Invia
+        {submitting ? "Invio in corso…" : "Invia"}
       </button>
     </form>
   );
