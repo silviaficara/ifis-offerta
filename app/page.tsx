@@ -8,7 +8,7 @@ import { ServicesSection } from "@/components/services/ServicesSection";
 import { PartnersGrid } from "@/components/partners/PartnersGrid";
 import * as productsModule from "@/lib/data/products";
 import type { ConfigurableProduct } from "@/lib/data/products";
-import { sortedCategories } from "@/lib/data/categories";
+import { categoriesForPartner, slugFromPartnerToken } from "@/lib/data/categories";
 
 // Prezzo "a partire da" per categoria — visualizzato come hint sopra la lista.
 // Mappa slug → prezzo; categorie senza prezzo definito non lo mostrano.
@@ -19,7 +19,8 @@ const FROM_PRICE_BY_SLUG: Record<string, number> = {
 };
 
 export default function Home() {
-  const cats = sortedCategories();
+  const partnerSlug = slugFromPartnerToken(process.env.NEXT_PUBLIC_PARTNER_TOKEN);
+  const cats = categoriesForPartner(partnerSlug);
   return (
     <>
       <Header />

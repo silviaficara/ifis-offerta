@@ -19,6 +19,13 @@ export type Category = {
   title?: string;
   /** Sottotitolo (es. "Configura memoria, colore e durata."). Default: vuoto */
   subtitle?: string;
+
+  /**
+   * Lista di slug partner su cui la categoria NON deve apparire.
+   * Default vuoto = visibile su tutti i partner.
+   * Esempio: ["credifarma"] → categoria visibile solo su Ifis (e adminportal).
+   */
+  hiddenFor?: string[];
 };
 
 export const categories: Category[] = [
@@ -59,4 +66,27 @@ export function arrayNameForCategory(slug: string): string {
 /** Ritorna le categorie ordinate per `order` crescente. */
 export function sortedCategories(): Category[] {
   return [...categories].sort((a, b) => a.order - b.order);
+}
+
+/**
+ * Ritorna le categorie visibili per un partner specifico, ordinate.
+ * Esclude quelle con `hiddenFor` contenente lo slug del partner.
+ * Su adminportal lo slug è `undefined` → mostra tutto (override admin).
+ */
+export function categoriesForPartner(partnerSlug?: string): Category[] {
+  const all = sortedCategories();
+  if (!partnerSlug) return all;
+  return all.filter((c) => !c.hiddenFor?.includes(partnerSlug));
+}
+
+/**
+ * Estrae lo slug dal token partner (formato `<slug>_<hex>`).
+ * Usato sulle landing per sapere quali categorie mostrare in base alla
+ * env var NEXT_PUBLIC_PARTNER_TOKEN.
+ */
+export function slugFromPartnerToken(token: string | undefined): string | undefined {
+  if (!token) return undefined;
+  const idx = token.indexOf("_");
+  if (idx <= 0) return undefined;
+  return token.slice(0, idx);
 }
