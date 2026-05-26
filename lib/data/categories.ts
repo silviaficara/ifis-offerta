@@ -56,17 +56,6 @@ export const categories: Category[] = [
     title: "Stampanti multifunzione.",
     subtitle: "Laser a colori, wireless. Per studi e uffici.",
   },
-  {
-    slug: "monitor",
-    label: "Monitor x Aziende",
-    order: 3,
-    eyebrow: "Monitor Professionali",
-    title: "La nostra selezione di monitor",
-    subtitle: "il monitor migliore di sempre",
-    hiddenFor: [
-      "ifis",
-    ],
-  },
 ];
 
 /** Nome dell'array in products.ts per una category slug. */
