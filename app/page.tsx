@@ -6,13 +6,20 @@ import { PackagesSection } from "@/components/packages/PackagesSection";
 import { ProductSection } from "@/components/products/ProductSection";
 import { ServicesSection } from "@/components/services/ServicesSection";
 import { PartnersGrid } from "@/components/partners/PartnersGrid";
-import {
-  appleProducts,
-  notebookProducts,
-  printerProducts,
-} from "@/lib/data/products";
+import * as productsModule from "@/lib/data/products";
+import type { ConfigurableProduct } from "@/lib/data/products";
+import { sortedCategories } from "@/lib/data/categories";
+
+// Prezzo "a partire da" per categoria — visualizzato come hint sopra la lista.
+// Mappa slug → prezzo; categorie senza prezzo definito non lo mostrano.
+const FROM_PRICE_BY_SLUG: Record<string, number> = {
+  apple: 22,
+  notebook: 26,
+  printer: 15,
+};
 
 export default function Home() {
+  const cats = sortedCategories();
   return (
     <>
       <Header />
@@ -21,34 +28,23 @@ export default function Home() {
         <QuickNav />
         <PackagesSection />
 
-        <ProductSection
-          id="apple"
-          eyebrow="Apple"
-          title="Il meglio di Apple, in noleggio."
-          subtitle="Configura memoria, colore e durata."
-          products={appleProducts}
-          tinted
-          fromPrice={22}
-        />
-
-        <ProductSection
-          id="notebook"
-          eyebrow="Notebook"
-          title="Notebook business."
-          subtitle="HP, Lenovo, DELL per il lavoro quotidiano."
-          products={notebookProducts}
-          fromPrice={26}
-        />
-
-        <ProductSection
-          id="stampanti"
-          eyebrow="Stampanti"
-          title="Stampanti multifunzione."
-          subtitle="Laser a colori, wireless. Per studi e uffici."
-          products={printerProducts}
-          tinted
-          fromPrice={15}
-        />
+        {cats.map((c, i) => {
+          const arr = (productsModule as Record<string, unknown>)[`${c.slug}Products`];
+          const products = Array.isArray(arr) ? (arr as ConfigurableProduct[]) : [];
+          if (products.length === 0) return null;
+          return (
+            <ProductSection
+              key={c.slug}
+              id={c.slug}
+              eyebrow={c.eyebrow ?? c.label}
+              title={c.title ?? c.label}
+              subtitle={c.subtitle ?? ""}
+              products={products}
+              tinted={i % 2 === 0}
+              fromPrice={FROM_PRICE_BY_SLUG[c.slug]}
+            />
+          );
+        })}
 
         <ServicesSection />
         <PartnersGrid />
