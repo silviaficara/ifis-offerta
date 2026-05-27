@@ -13,7 +13,7 @@ export function Footer() {
               height={222}
               className="h-6 sm:h-7 w-auto"
             />
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-3 mt-1">
               <a
                 href="https://www.kronos.tech/wp-content/uploads/2026/05/Certificato-ITA-10327-ISMS-Kronos-Informatica-S.r.l-%E2%80%93-Kopi.pdf"
                 target="_blank"
@@ -24,9 +24,9 @@ export function Footer() {
                 <Image
                   src="/certificazioni/iso-27001.png"
                   alt="ISO 27001 - Information Security"
-                  width={120}
-                  height={60}
-                  className="h-8 w-auto"
+                  width={200}
+                  height={200}
+                  className="h-20 w-auto"
                 />
               </a>
               <a
@@ -39,9 +39,9 @@ export function Footer() {
                 <Image
                   src="/certificazioni/iso-9001.png"
                   alt="ISO 9001 - Quality Management"
-                  width={120}
-                  height={60}
-                  className="h-8 w-auto"
+                  width={200}
+                  height={200}
+                  className="h-20 w-auto"
                 />
               </a>
             </div>
