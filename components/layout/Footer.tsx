@@ -5,7 +5,7 @@ export function Footer() {
     <footer className="border-t border-zinc-100 bg-white">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 py-8 sm:py-12">
         <div className="flex flex-col items-center gap-4 text-center md:flex-row md:items-start md:justify-between md:gap-8 md:text-left">
-          <div className="shrink-0">
+          <div className="shrink-0 flex flex-col items-center md:items-start gap-2">
             <Image
               src="/kronos-logo.png"
               alt="Kronos Tech"
@@ -13,6 +13,38 @@ export function Footer() {
               height={222}
               className="h-6 sm:h-7 w-auto"
             />
+            <div className="flex items-center gap-2">
+              <a
+                href="https://www.kronos.tech/wp-content/uploads/2026/05/Certificato-ITA-10327-ISMS-Kronos-Informatica-S.r.l-%E2%80%93-Kopi.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Certificazione ISO 27001 (ISMS)"
+                className="block transition-opacity hover:opacity-80"
+              >
+                <Image
+                  src="/certificazioni/iso-27001.png"
+                  alt="ISO 27001 - Information Security"
+                  width={120}
+                  height={60}
+                  className="h-8 w-auto"
+                />
+              </a>
+              <a
+                href="https://www.kronos.tech/wp-content/uploads/2026/05/Certificato-ITA-10327-QMS-Kronos-Informatica-S.r.l.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Certificazione ISO 9001 (QMS)"
+                className="block transition-opacity hover:opacity-80"
+              >
+                <Image
+                  src="/certificazioni/iso-9001.png"
+                  alt="ISO 9001 - Quality Management"
+                  width={120}
+                  height={60}
+                  className="h-8 w-auto"
+                />
+              </a>
+            </div>
           </div>
 
           <div className="space-y-1 text-xs sm:text-sm text-zinc-900">
