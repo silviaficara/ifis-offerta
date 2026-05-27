@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { useCart } from "@/lib/cart/CartContext";
 import type { CartItem } from "@/lib/cart/types";
 import { formatEuro } from "@/lib/format";
@@ -167,10 +168,10 @@ function buildCartItemsAndConfig(items: CartItem[]): {
 }
 
 export function ContactForm() {
+  const router = useRouter();
   const { items, totalMonthly, clear } = useCart();
   const [state, setState] = useState<FormState>(initial);
   const [errors, setErrors] = useState<FormErrors>({});
-  const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
 
@@ -255,9 +256,9 @@ export function ContactForm() {
         setSubmitting(false);
         return;
       }
-      setSubmitting(false);
-      setSubmitted(true);
       clear(); // svuota il carrello dopo invio riuscito
+      // Navigazione alla pagina di conferma dedicata (design completo con CTA).
+      router.push("/checkout/grazie");
     } catch (err) {
       setSubmitError(
         "Connessione non disponibile. Verifica la rete e riprova."
@@ -268,31 +269,6 @@ export function ContactForm() {
   };
 
   const valid = isFormValid(state);
-
-  if (submitted) {
-    return (
-      <div className="rounded-3xl bg-white ring-1 ring-zinc-100 p-8 text-center">
-        <p className="text-2xl font-semibold tracking-tight text-zinc-900">
-          Grazie!
-        </p>
-        <p className="mt-2 text-zinc-600">
-          Ti contatteremo entro 24 ore lavorative.
-        </p>
-        <button
-          type="button"
-          onClick={() => {
-            setState(initial);
-            setErrors({});
-            setSubmitted(false);
-            setSubmitError(null);
-          }}
-          className="mt-6 inline-flex h-10 items-center justify-center rounded-full bg-zinc-100 hover:bg-zinc-200 px-5 text-sm font-medium text-zinc-900 transition-colors"
-        >
-          Invia un&apos;altra richiesta
-        </button>
-      </div>
-    );
-  }
 
   return (
     <form
