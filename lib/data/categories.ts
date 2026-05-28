@@ -26,6 +26,18 @@ export type Category = {
    * Esempio: ["credifarma"] → categoria visibile solo su Ifis (e adminportal).
    */
   hiddenFor?: string[];
+
+  /**
+   * Path immagine card "Cosa vuoi noleggiare?" sulla landing (componente QuickNav).
+   * Es. "/categories/monitor.png". Caricato via /categories UI.
+   */
+  quickNavImage?: string;
+
+  /**
+   * Prezzo "a partire da" mostrato sulla card QuickNav (€/mese).
+   * Se 0/undefined non viene mostrato il prezzo.
+   */
+  quickNavFromPrice?: number;
 };
 
 export const categories: Category[] = [
@@ -37,6 +49,8 @@ export const categories: Category[] = [
     eyebrow: "Apple",
     title: "Il meglio di Apple, in noleggio.",
     subtitle: "Configura memoria, colore e durata.",
+    quickNavImage: "/categories/apple.png",
+    quickNavFromPrice: 22,
   },
   {
     slug: "notebook",
@@ -46,6 +60,8 @@ export const categories: Category[] = [
     eyebrow: "Notebook",
     title: "Notebook business.",
     subtitle: "HP, Lenovo, DELL per il lavoro quotidiano.",
+    quickNavImage: "/categories/notebook.png",
+    quickNavFromPrice: 26,
   },
   {
     slug: "printer",
@@ -55,8 +71,25 @@ export const categories: Category[] = [
     eyebrow: "Stampanti",
     title: "Stampanti multifunzione.",
     subtitle: "Laser a colori, wireless. Per studi e uffici.",
+    quickNavImage: "/categories/stampanti.png",
+    quickNavFromPrice: 15,
+  },
+  {
+    // Pseudo-categoria che rappresenta la sezione "Servizi aggiuntivi" nelle
+    // landing partner. Lo slug riservato __services__ è riconosciuto dal
+    // page.tsx delle landing e renderizza <ServicesSection /> al posto suo.
+    // Permette di spostarla nell'ordine come una categoria normale.
+    slug: "__services__",
+    label: "Servizi aggiuntivi",
+    order: 3,
+    description: "Posizione della sezione servizi nella landing",
   },
 ];
+
+/** True se la categoria è la pseudo-entry "servizi" (placeholder di posizione). */
+export function isServicesPseudoCategory(slug: string): boolean {
+  return slug === "__services__";
+}
 
 /** Nome dell'array in products.ts per una category slug. */
 export function arrayNameForCategory(slug: string): string {

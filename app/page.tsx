@@ -8,10 +8,13 @@ import { ServicesSection } from "@/components/services/ServicesSection";
 import { PartnersGrid } from "@/components/partners/PartnersGrid";
 import * as productsModule from "@/lib/data/products";
 import type { ConfigurableProduct } from "@/lib/data/products";
-import { categoriesForPartner, slugFromPartnerToken } from "@/lib/data/categories";
+import {
+  categoriesForPartner,
+  isServicesPseudoCategory,
+  slugFromPartnerToken,
+} from "@/lib/data/categories";
 
 // Prezzo "a partire da" per categoria — visualizzato come hint sopra la lista.
-// Mappa slug → prezzo; categorie senza prezzo definito non lo mostrano.
 const FROM_PRICE_BY_SLUG: Record<string, number> = {
   apple: 22,
   notebook: 26,
@@ -30,6 +33,10 @@ export default function Home() {
         <PackagesSection />
 
         {cats.map((c, i) => {
+          // Pseudo-categoria "Servizi": rendiamo la ServicesSection.
+          if (isServicesPseudoCategory(c.slug)) {
+            return <ServicesSection key="__services__" />;
+          }
           const arr = (productsModule as Record<string, unknown>)[`${c.slug}Products`];
           const products = Array.isArray(arr) ? (arr as ConfigurableProduct[]) : [];
           if (products.length === 0) return null;
@@ -47,7 +54,6 @@ export default function Home() {
           );
         })}
 
-        <ServicesSection />
         <PartnersGrid />
       </main>
       <Footer />
