@@ -51,6 +51,9 @@ export const categories: Category[] = [
     subtitle: "Configura memoria, colore e durata.",
     quickNavImage: "/categories/apple.png",
     quickNavFromPrice: 22,
+    hiddenFor: [
+      "vendita-privati",
+    ],
   },
   {
     slug: "notebook",
