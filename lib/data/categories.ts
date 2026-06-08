@@ -77,11 +77,11 @@ export const categories: Category[] = [
     eyebrow: "Stampanti",
     title: "Stampanti multifunzione.",
     subtitle: "Laser a colori, wireless. Per studi e uffici.",
-    quickNavImage: "/categories/stampanti.png",
-    quickNavFromPrice: 15,
     hiddenFor: [
       "vendita-privati",
     ],
+    quickNavImage: "/categories/stampanti.png",
+    quickNavFromPrice: 15,
   },
   {
     slug: "__services__",
