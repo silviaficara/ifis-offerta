@@ -75,14 +75,21 @@ export const categories: Category[] = [
     quickNavFromPrice: 15,
   },
   {
-    // Pseudo-categoria che rappresenta la sezione "Servizi aggiuntivi" nelle
-    // landing partner. Lo slug riservato __services__ è riconosciuto dal
-    // page.tsx delle landing e renderizza <ServicesSection /> al posto suo.
-    // Permette di spostarla nell'ordine come una categoria normale.
     slug: "__services__",
     label: "Servizi aggiuntivi",
     order: 3,
     description: "Posizione della sezione servizi nella landing",
+  },
+  {
+    slug: "mac",
+    label: "Mac",
+    order: 4,
+    eyebrow: "Mac",
+    title: "Potenza, leggerezza e autonomia da record. Mac trasforma ogni idea in produttività.",
+    hiddenFor: [
+      "ifis",
+      "credifarma",
+    ],
   },
 ];
 
