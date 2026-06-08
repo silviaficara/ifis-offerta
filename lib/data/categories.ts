@@ -99,6 +99,7 @@ export const categories: Category[] = [
       "ifis",
       "credifarma",
     ],
+    quickNavImage: "/categories/mac.png",
   },
 ];
 
