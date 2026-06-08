@@ -63,11 +63,11 @@ export const categories: Category[] = [
     eyebrow: "Notebook",
     title: "Notebook business.",
     subtitle: "HP, Lenovo, DELL per il lavoro quotidiano.",
-    quickNavImage: "/categories/notebook.png",
-    quickNavFromPrice: 26,
     hiddenFor: [
       "vendita-privati",
     ],
+    quickNavImage: "/categories/notebook.png",
+    quickNavFromPrice: 26,
   },
   {
     slug: "printer",
@@ -79,6 +79,9 @@ export const categories: Category[] = [
     subtitle: "Laser a colori, wireless. Per studi e uffici.",
     quickNavImage: "/categories/stampanti.png",
     quickNavFromPrice: 15,
+    hiddenFor: [
+      "vendita-privati",
+    ],
   },
   {
     slug: "__services__",
