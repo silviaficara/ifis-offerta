@@ -49,11 +49,11 @@ export const categories: Category[] = [
     eyebrow: "Apple",
     title: "Il meglio di Apple, in noleggio.",
     subtitle: "Configura memoria, colore e durata.",
-    quickNavImage: "/categories/apple.png",
-    quickNavFromPrice: 22,
     hiddenFor: [
       "vendita-privati",
     ],
+    quickNavImage: "/categories/apple.png",
+    quickNavFromPrice: 22,
   },
   {
     slug: "notebook",
@@ -65,6 +65,9 @@ export const categories: Category[] = [
     subtitle: "HP, Lenovo, DELL per il lavoro quotidiano.",
     quickNavImage: "/categories/notebook.png",
     quickNavFromPrice: 26,
+    hiddenFor: [
+      "vendita-privati",
+    ],
   },
   {
     slug: "printer",
