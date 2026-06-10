@@ -594,9 +594,9 @@ export const printerProducts: ConfigurableProduct[] = [
   {
     id: "hp-color-laserjet-3302fdn",
     name: "HP Color LaserJet Pro MFP\n3302fdn",
-    image: "/products/hp-color-laserjet-3301.png",
     basePrice: 15,
     durations: defaultDurations,
+    image: "/products/hp-color-laserjet-3301.png",
   },
   {
     id: "brother-mfc-l8690cdw",
