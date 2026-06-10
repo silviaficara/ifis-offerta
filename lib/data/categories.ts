@@ -89,9 +89,7 @@ export const categories: Category[] = [
     label: "Servizi aggiuntivi",
     order: 3,
     description: "Posizione della sezione servizi nella landing",
-    hiddenFor: [
-      "credifarma-privati",
-    ],
+    hiddenFor: [],
   },
   {
     slug: "mac",
