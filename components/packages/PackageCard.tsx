@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useCart } from "@/lib/cart/CartContext";
 import type { PackageItem } from "@/lib/data/packages";
 import { formatEuro } from "@/lib/format";
+import { displayPrice, vatLabel } from "@/lib/pricing";
 
 const tierStyles: Record<
   PackageItem["tier"],
@@ -91,9 +92,9 @@ export function PackageCard({ item, rowTitle }: Props) {
                 <span className="block text-[10px] font-normal uppercase tracking-wide text-zinc-500">
                   A partire da
                 </span>
-                {formatEuro(item.monthly!)} €/mese
+                {formatEuro(displayPrice(item.monthly!))} €/mese
                 <span className="block text-[10px] font-normal text-zinc-500 mt-0.5">
-                  per {item.months} mesi · + IVA
+                  per {item.months} mesi · {vatLabel}
                 </span>
               </p>
             )}
@@ -136,8 +137,8 @@ export function PackageCard({ item, rowTitle }: Props) {
             <div className="mb-4">
               <p className="text-[11px] uppercase tracking-wide text-zinc-500">A partire da</p>
               <p className="text-base font-semibold text-[#1a1d56]">
-                {formatEuro(item.monthly!)} €/mese{" "}
-                <span className="text-xs font-normal text-zinc-500">+ IVA</span>
+                {formatEuro(displayPrice(item.monthly!))} €/mese{" "}
+                <span className="text-xs font-normal text-zinc-500">{vatLabel}</span>
               </p>
               <p className="text-[10px] text-zinc-500 mt-0.5">
                 per {item.months} mesi

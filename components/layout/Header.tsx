@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { useCart } from "@/lib/cart/CartContext";
 import { formatEuro } from "@/lib/format";
+import { displayPrice } from "@/lib/pricing";
 
 export function Header() {
   const { count, totalMonthly, toggle } = useCart();
@@ -87,7 +88,7 @@ export function Header() {
               <span className="font-semibold">{count}</span>
               <span className={bump ? "text-white/60" : "opacity-60"}>·</span>
               <span className="font-semibold">
-                {formatEuro(totalMonthly)}
+                {formatEuro(displayPrice(totalMonthly))}
                 <span className="hidden sm:inline"> €/mese</span>
                 <span className="sm:hidden"> €/m</span>
               </span>

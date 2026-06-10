@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { formatEuro } from "@/lib/format";
+import { displayPrice, vatLabel } from "@/lib/pricing";
 
 type Props = {
   eyebrow?: string;
@@ -86,9 +87,9 @@ function PriceBadge({ amount }: { amount: number }) {
           A partire da
         </p>
         <p className="text-xl font-semibold text-[#1a1d56]">
-          {formatEuro(amount)} €
+          {formatEuro(displayPrice(amount))} €
           <span className="ml-1 text-xs font-normal text-zinc-500">
-            /mese + IVA
+            /mese {vatLabel}
           </span>
         </p>
       </div>

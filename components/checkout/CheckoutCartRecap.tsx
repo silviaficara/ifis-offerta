@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useCart } from "@/lib/cart/CartContext";
 import { formatEuro } from "@/lib/format";
+import { displayPrice, vatLabel } from "@/lib/pricing";
 
 export function CheckoutCartRecap() {
   const {
@@ -77,8 +78,8 @@ export function CheckoutCartRecap() {
               </div>
               {item.monthly > 0 ? (
                 <p className="shrink-0 text-sm font-semibold text-[#1a1d56] text-right leading-snug">
-                  {formatEuro(item.monthly * item.quantity)} €/mese
-                  <span className="block font-normal text-zinc-500 text-xs">+ IVA</span>
+                  {formatEuro(displayPrice(item.monthly * item.quantity))} €/mese
+                  <span className="block font-normal text-zinc-500 text-xs">{vatLabel}</span>
                 </p>
               ) : (
                 <p className="shrink-0 text-sm text-zinc-500">Su richiesta</p>
@@ -130,8 +131,8 @@ export function CheckoutCartRecap() {
               </p>
             )}
             <p className="text-xl sm:text-2xl font-semibold tracking-tight text-[#1a1d56]">
-              {formatEuro(totalMonthly)} €/mese{" "}
-              <span className="text-sm sm:text-base font-normal text-zinc-500">+ IVA</span>
+              {formatEuro(displayPrice(totalMonthly))} €/mese{" "}
+              <span className="text-sm sm:text-base font-normal text-zinc-500">{vatLabel}</span>
             </p>
           </div>
         </div>

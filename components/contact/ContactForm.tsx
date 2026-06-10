@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useCart } from "@/lib/cart/CartContext";
 import type { CartItem } from "@/lib/cart/types";
 import { formatEuro } from "@/lib/format";
+import { displayPrice, vatLabel } from "@/lib/pricing";
 
 type FormState = {
   nome: string;
@@ -157,9 +158,9 @@ function buildCartItemsAndConfig(items: CartItem[]): {
     if (it.monthly > 0) {
       const totalLine =
         it.quantity > 1
-          ? ` (totale ${formatEuro(it.monthly * it.quantity)} €/mese)`
+          ? ` (totale ${formatEuro(displayPrice(it.monthly * it.quantity))} €/mese)`
           : "";
-      lines.push(`   ${formatEuro(it.monthly)} €/mese${totalLine}`);
+      lines.push(`   ${formatEuro(displayPrice(it.monthly))} €/mese${totalLine}`);
     } else {
       lines.push(`   Prezzo su richiesta`);
     }
@@ -215,7 +216,7 @@ export function ContactForm() {
     // Aggiungo riepilogo totale alla configurazione se ci sono prezzi non "su richiesta"
     const configWithTotal =
       totalMonthly > 0
-        ? `${configurazione}\n\nTotale canone mensile: ${formatEuro(totalMonthly)} €/mese + IVA`
+        ? `${configurazione}\n\nTotale canone mensile: ${formatEuro(displayPrice(totalMonthly))} €/mese ${vatLabel}`
         : configurazione;
 
     const payload = {
