@@ -79,6 +79,7 @@ export const categories: Category[] = [
     subtitle: "Laser a colori, wireless. Per studi e uffici.",
     hiddenFor: [
       "vendita-privati",
+      "credifarma-privati",
     ],
     quickNavImage: "/categories/stampanti.png",
     quickNavFromPrice: 15,
