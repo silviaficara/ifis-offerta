@@ -50,8 +50,8 @@ export function Header() {
         </Link>
 
         <div className="flex items-center gap-1.5 sm:gap-3 min-w-0">
-        <button
-          type="button"
+        <a
+          href="https://noleggiob2c.kronos.tech/?origine=ifis"
           className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full h-10 px-3 sm:px-5 text-sm sm:text-base font-semibold whitespace-nowrap bg-[#1a1d56] hover:bg-[#15183f] text-white transition-colors"
         >
           <span className="hidden sm:inline">Sei un privato? Scopri l&apos;offerta dedicata</span>
@@ -71,7 +71,7 @@ export function Header() {
             <line x1="5" y1="12" x2="19" y2="12" />
             <polyline points="12 5 19 12 12 19" />
           </svg>
-        </button>
+        </a>
 
         <button
           type="button"
