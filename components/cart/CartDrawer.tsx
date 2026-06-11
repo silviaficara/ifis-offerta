@@ -123,7 +123,7 @@ export function CartDrawer() {
                           </span>
                         </p>
                       ) : (
-                        <p className="shrink-0 text-sm text-zinc-500">
+                        <p className="shrink-0 text-sm font-semibold text-[#FB8F22]">
                           Su richiesta
                         </p>
                       )}

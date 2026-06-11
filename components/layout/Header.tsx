@@ -24,11 +24,11 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-zinc-100">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 h-14 flex items-center justify-between gap-2">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 h-[4.5rem] flex items-center justify-between gap-1.5 sm:gap-2">
         <Link
           href="/"
           aria-label="Kronos Tech × Banca Ifis — home"
-          className="inline-flex items-center gap-2 sm:gap-3 min-w-0"
+          className="inline-flex items-center gap-1.5 sm:gap-3 min-w-0"
         >
           <Image
             src="/kronos-logo.png"
@@ -36,26 +36,50 @@ export function Header() {
             width={1600}
             height={222}
             priority
-            className="h-5 sm:h-7 w-auto"
+            className="h-5 sm:h-9 w-auto"
           />
-          <span aria-hidden className="h-3.5 sm:h-5 w-px bg-zinc-300" />
+          <span aria-hidden className="h-4 sm:h-7 w-px bg-zinc-300" />
           <Image
             src="/banca-ifis-logo.webp"
             alt="Ifis Rental Services — Banca Ifis"
             width={1097}
             height={522}
             priority
-            className="h-9 sm:h-11 w-auto"
+            className="h-8 sm:h-14 w-auto"
           />
         </Link>
+
+        <div className="flex items-center gap-1.5 sm:gap-3 min-w-0">
+        <button
+          type="button"
+          className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full h-10 px-3 sm:px-5 text-sm sm:text-base font-semibold whitespace-nowrap bg-[#1a1d56] hover:bg-[#15183f] text-white transition-colors"
+        >
+          <span className="hidden sm:inline">Sei un privato? Scopri l&apos;offerta dedicata</span>
+          <span className="sm:hidden">Privati</span>
+          <svg
+            aria-hidden
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="hidden sm:block sm:w-[18px] sm:h-[18px]"
+          >
+            <line x1="5" y1="12" x2="19" y2="12" />
+            <polyline points="12 5 19 12 12 19" />
+          </svg>
+        </button>
 
         <button
           type="button"
           onClick={toggle}
           aria-label={`Apri riepilogo preventivo: ${count} ${count === 1 ? "prodotto" : "prodotti"}`}
-          className={`inline-flex shrink-0 items-center justify-center gap-1.5 sm:gap-2 rounded-full h-9 ${
+          className={`inline-flex shrink-0 items-center justify-center gap-1.5 sm:gap-2 rounded-full h-10 ${
             count === 0 ? "w-9 sm:w-auto sm:px-4" : "px-3 sm:px-4"
-          } text-xs sm:text-sm font-medium transition-colors origin-center whitespace-nowrap ${
+          } text-sm sm:text-base font-medium transition-colors origin-center whitespace-nowrap ${
             bump
               ? "bg-[#1a1d56] text-white ring-4 ring-[#1a1d56]/25 animate-[cart-bump_0.6s_ease-out]"
               : count > 0
@@ -95,6 +119,7 @@ export function Header() {
             </>
           )}
         </button>
+        </div>
       </div>
     </header>
   );

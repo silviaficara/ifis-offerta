@@ -82,7 +82,7 @@ export function CheckoutCartRecap() {
                   <span className="block font-normal text-zinc-500 text-xs">{vatLabel}</span>
                 </p>
               ) : (
-                <p className="shrink-0 text-sm text-zinc-500">Su richiesta</p>
+                <p className="shrink-0 text-sm font-semibold text-[#FB8F22]">Su richiesta</p>
               )}
             </div>
             <div className="mt-2.5 flex items-center justify-between gap-3">

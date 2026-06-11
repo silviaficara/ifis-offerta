@@ -275,8 +275,24 @@ export function ContactForm() {
     <form
       noValidate
       onSubmit={handleSubmit}
-      className="rounded-3xl bg-white ring-1 ring-zinc-100 p-6 sm:p-8 space-y-4"
+      className="rounded-3xl bg-white ring-1 ring-zinc-100 p-6 sm:p-8 space-y-6"
     >
+      <label className="block rounded-2xl bg-[#1a1d56]/[0.04] ring-1 ring-[#1a1d56]/10 p-4">
+        <span className="block text-sm font-semibold text-zinc-800 mb-2">
+          Non hai trovato il prodotto che cercavi? Scrivici cosa ti serve: ti
+          aiutiamo noi!
+        </span>
+        <textarea
+          value={state.note}
+          onChange={(e) => set("note", e.target.value)}
+          rows={3}
+          placeholder="Es. richieste particolari, tempistiche, dotazioni accessorie…"
+          className="w-full rounded-xl border border-zinc-200 bg-white px-4 py-2 text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:border-[#1a1d56] focus:ring-[#1a1d56]/20 transition-all"
+        />
+      </label>
+
+      <div className="space-y-4">
+        <p className="text-sm font-semibold text-zinc-900">I tuoi dati</p>
       <div className="grid gap-4 sm:grid-cols-2">
         <Input
           label="Nome"
@@ -340,21 +356,9 @@ export function ContactForm() {
           required
         />
       </div>
+      </div>
 
-      <label className="block">
-        <span className="block text-xs font-medium text-zinc-500 mb-1.5">
-          Note aggiuntive
-        </span>
-        <textarea
-          value={state.note}
-          onChange={(e) => set("note", e.target.value)}
-          rows={3}
-          placeholder="Es. richieste particolari, tempistiche, dotazioni accessorie…"
-          className="w-full rounded-xl border border-zinc-200 bg-white px-4 py-2 text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:border-[#1a1d56] focus:ring-[#1a1d56]/20 transition-all"
-        />
-      </label>
-
-      <div className="space-y-3 pt-2">
+      <div className="space-y-3">
         <label className="flex items-start gap-3">
           <input
             type="checkbox"
@@ -395,11 +399,6 @@ export function ContactForm() {
           ) : null}
         </div>
       </div>
-
-      <p className="text-xs text-zinc-500 leading-relaxed">
-        Non hai trovato il prodotto che cercavi? Scrivici cosa ti serve: ti
-        aiutiamo noi!
-      </p>
 
       {submitError ? (
         <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800">
