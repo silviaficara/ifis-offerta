@@ -52,36 +52,6 @@ export const defaultDurations: DurationOption[] = [
 
 export const appleProducts: ConfigurableProduct[] = [
   {
-    id: "iphone-17-pro",
-    name: "iPhone 17 Pro",
-    image: "/products/iphone-17-pro.png",
-    tagline: "Pro al cubo.",
-    basePrice: 30,
-    memory: [
-      { label: "256GB", priceDelta: 0 },
-      { label: "512GB", priceDelta: 3 },
-      { label: "1TB", priceDelta: 7 },
-    ],
-    colors: [
-      { label: "Cosmic Orange", swatch: "#d96b3a" },
-      { label: "Deep Blue", swatch: "#2a4d72" },
-      { label: "Silver", swatch: "#d4d6d8" },
-    ],
-    durations: defaultDurations,
-    addons: [
-      {
-        id: "applecare",
-        label: "AppleCare+ per aziende",
-        description: "Supporto Apple 24/7 e copertura per danni accidentali.",
-      },
-      {
-        id: "caricabatterie",
-        label: "Caricabatteria",
-        description: "Caricatore compatibile incluso nella confezione.",
-      },
-    ],
-  },
-  {
     id: "ipad-pro-m5",
     name: "iPad Pro M5 + Kit Apple",
     image: "/products/ipad-pro-m5.png",
