@@ -452,6 +452,14 @@ export const appleProducts: ConfigurableProduct[] = [
       },
     ],
   },
+  {
+    id: "iphone-18-pro",
+    name: "iPhone 18 Pro",
+    basePrice: 0,
+    durations: defaultDurations,
+    image: "https://contract.kronos.tech/media/shared/products/iphone-18-pro-burgundy-v4-ab22ae98.webp",
+    tagline: "Il chip A20 Pro cambia le regole.",
+  },
 ];
 
 export const notebookProducts: ConfigurableProduct[] = [
