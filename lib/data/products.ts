@@ -480,31 +480,14 @@ export const notebookProducts: ConfigurableProduct[] = [
   {
     id: "lenovo-thinkpad-t14-gen6",
     name: "Lenovo ThinkBook",
-    image: "/products/lenovo-thinkpad.png",
-    tagline: "Lenovo ThinkBook 14 - IRL Gen 8 Core 5",
     basePrice: 27,
-    colors: [{ label: "Dual Tone Arctic Grey", swatch: "#b5bcc4" }],
     durations: defaultDurations,
-    optionGroups: [
+    image: "/products/lenovo-thinkpad.png",
+    tagline: "Lenovo ThinkBook 14 - G8 IAL-AI PC - 14\" Intel Core Ultra 9 - 185H",
+    colors: [
       {
-        id: "cpu",
-        label: "Processore",
-        choices: [
-          { label: "Intel Core 5 210H", sublabel: "SSD PCIe 4.0" },
-          { label: "Intel Core 7 240H" },
-        ],
-      },
-      {
-        id: "display",
-        label: "Display",
-        choices: [
-          { label: '14" standard', sublabel: "Non touch" },
-          {
-            label: '14" IPS Touchscreen',
-            sublabel: "1920×1200 touch — solo con Core 7 240H",
-            requires: { cpu: ["Intel Core 7 240H"] },
-          },
-        ],
+        label: "Dual Tone Arctic Grey",
+        swatch: "#b5bcc4",
       },
     ],
   },
