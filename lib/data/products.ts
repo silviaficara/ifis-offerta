@@ -482,7 +482,7 @@ export const notebookProducts: ConfigurableProduct[] = [
     name: "Lenovo ThinkBook",
     basePrice: 27,
     durations: defaultDurations,
-    image: "/products/lenovo-thinkpad.png",
+    image: "https://contract.kronos.tech/media/shared/products/lenovo-thinkbook-14-61c2acd4.png",
     tagline: "Lenovo ThinkBook 14 - G8 IAL-AI PC - 14\" Intel Core Ultra 9 - 185H",
     colors: [
       {
