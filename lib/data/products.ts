@@ -468,7 +468,7 @@ export const notebookProducts: ConfigurableProduct[] = [
     name: "HP ProBook 4",
     basePrice: 26,
     durations: defaultDurations,
-    image: "/products/hp-probook.png",
+    image: "https://contract.kronos.tech/media/shared/products/hp-probook-4-9960d595.png",
     tagline: "HP ProBook 4 - Gi 14 Intel Core Ultra 7 500GB",
     colors: [
       {
