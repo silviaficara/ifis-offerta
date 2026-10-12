@@ -466,30 +466,14 @@ export const notebookProducts: ConfigurableProduct[] = [
   {
     id: "hp-probook-460-g12",
     name: "HP ProBook 4",
-    image: "/products/hp-probook.png",
-    tagline: "HP ProBook 4 - G1i Intel Core Ultra 5",
     basePrice: 26,
-    colors: [{ label: "Pike Silver", swatch: "#9ea2a6" }],
     durations: defaultDurations,
-    optionGroups: [
+    image: "/products/hp-probook.png",
+    tagline: "HP ProBook 4 - Gi 14 Intel Core Ultra 7 500GB",
+    colors: [
       {
-        id: "screen",
-        label: "Dimensioni schermo",
-        layout: "grid",
-        choices: [{ label: '14"' }, { label: '16"' }],
-      },
-      {
-        id: "storage",
-        label: "Memoria e archiviazione",
-        wide: true,
-        choices: [
-          { label: "16 GB DDR5 · 512 GB SSD NVMe" },
-          {
-            label: "24 GB DDR5 · 1 TB SSD NVMe",
-            sublabel: 'Disponibile solo con schermo 16"',
-            requires: { screen: ['16"'] },
-          },
-        ],
+        label: "Pike Silver",
+        swatch: "#9ea2a6",
       },
     ],
   },
