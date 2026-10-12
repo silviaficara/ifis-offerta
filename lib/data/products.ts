@@ -494,42 +494,18 @@ export const notebookProducts: ConfigurableProduct[] = [
   {
     id: "dell-pro-14-premium",
     name: "Dell Pro",
-    image: "/products/dell-pro.png",
-    tagline: "DELL Pro 16 PC 16250 Core Ultra 7",
     basePrice: 31,
-    colors: [
-      { label: "Magnetite", swatch: "#2a2a2c" },
-      { label: "Platinum Silver", swatch: "#d4d6d8" },
-    ],
     durations: defaultDurations,
-    optionGroups: [
+    image: "https://contract.kronos.tech/media/shared/products/dell-pro-16-de816a7e.png",
+    tagline: "DELL Pro 16 PC 16250 - AI PC - 16\" - Intel Core Ultra 7 - 255U",
+    colors: [
       {
-        id: "memory",
-        label: "Memoria",
-        choices: [
-          { label: "16 GB DDR5" },
-          { label: "32 GB DDR5 5600 MHz" },
-        ],
+        label: "Magnetite",
+        swatch: "#2a2a2c",
       },
       {
-        id: "display",
-        label: "Display",
-        choices: [
-          {
-            label: '16" standard',
-            requires: { memory: ["16 GB DDR5"] },
-          },
-          {
-            label: '16" Full HD+ touch anti-glare',
-            sublabel: "Touch — solo con 16 GB",
-            requires: { memory: ["16 GB DDR5"] },
-          },
-          {
-            label: '16" anti-glare',
-            sublabel: "Solo con 32 GB",
-            requires: { memory: ["32 GB DDR5 5600 MHz"] },
-          },
-        ],
+        label: "Platinum Silver",
+        swatch: "#d4d6d8",
       },
     ],
   },
