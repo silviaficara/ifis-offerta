@@ -4,11 +4,13 @@ import Image from "next/image";
 import { useState } from "react";
 import { Configurator } from "./Configurator";
 import type { ConfigurableProduct } from "@/lib/data/products";
+import { useAvailabilityNote } from "@/lib/availability";
 
 type Props = { product: ConfigurableProduct; cardBg?: string };
 
 export function ProductCard({ product, cardBg = "bg-white" }: Props) {
   const [open, setOpen] = useState(false);
+  const availability = useAvailabilityNote(product);
 
   return (
     <>
@@ -57,6 +59,12 @@ export function ProductCard({ product, cardBg = "bg-white" }: Props) {
             {product.tagline ? (
               <p className="mt-1 text-xs sm:text-sm text-zinc-500 leading-snug">
                 {product.tagline}
+              </p>
+            ) : null}
+            {availability ? (
+              <p className="mt-2 inline-flex items-center gap-1.5 rounded-full bg-zinc-100 px-2.5 py-1 text-[11px] font-medium leading-none text-zinc-600 ring-1 ring-inset ring-zinc-200/80">
+                <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#1a1d56]" />
+                {availability}
               </p>
             ) : null}
           </div>

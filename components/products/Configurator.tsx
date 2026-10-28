@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { Dialog } from "@/components/ui/Dialog";
 import { useCart } from "@/lib/cart/CartContext";
+import { useAvailabilityNote } from "@/lib/availability";
 import type {
   ConfigurableProduct,
   OptionChoice,
@@ -32,6 +33,7 @@ function isChoiceAvailable(
 
 export function Configurator({ product, open, onClose }: Props) {
   const { addItem } = useCart();
+  const availability = useAvailabilityNote(product);
 
   const defaultMemory = product.memory?.[0]?.label;
   const defaultColor = product.colors?.[0]?.label;
@@ -116,6 +118,12 @@ export function Configurator({ product, open, onClose }: Props) {
   return (
     <Dialog open={open} onClose={onClose} title={`Configura ${product.name}`}>
       <div className="space-y-6">
+        {availability ? (
+          <p className="inline-flex items-center gap-1.5 rounded-full bg-zinc-100 px-2.5 py-1 text-[11px] font-medium leading-none text-zinc-600 ring-1 ring-inset ring-zinc-200/80">
+            <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#1a1d56]" />
+            {availability}
+          </p>
+        ) : null}
         {product.memory ? (
           <Field label="Memoria">
             <div className="flex flex-wrap gap-2">

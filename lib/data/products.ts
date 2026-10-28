@@ -42,6 +42,13 @@ export type ConfigurableProduct = {
   durations: DurationOption[];
   optionGroups?: OptionGroup[];
   addons?: ProductAddon[];
+  /**
+   * Nota per i modelli annunciati (es. "Disponibile dal 6 novembre"): badge sulla
+   * scheda e nel configuratore fino ad `availableFrom` (AAAA-MM-GG), poi sparisce
+   * da sola. Impostate dal catalogo configurazioni dell'adminportal.
+   */
+  availability?: string;
+  availableFrom?: string;
 };
 
 export const defaultDurations: DurationOption[] = [
